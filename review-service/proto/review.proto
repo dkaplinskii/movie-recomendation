@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package review;
+
+option go_package = "pkg/reviewpb;reviewpb";
+
+service ReviewService {
+  rpc AddReview(AddReviewRequest) returns (AddReviewResponse);
+  rpc GetLatestReviews(GetLatestReviewsRequest) returns (GetLatestReviewsResponse);
+}
+
+message AddReviewRequest {
+  int64 user_id = 1;
+  int64 film_id = 2;
+  int32 review  = 3;
+}
+
+message AddReviewResponse {
+  bool  success = 1;
+}
+
+message GetLatestReviewsRequest {
+  int64 user_id = 1;
+  int32 limit = 2;
+}
+
+message GetLatestReviewsResponse {
+  repeated Review reviews = 1;
+}
+
+message Review {
+  int64 film_id = 1;
+  int32 review = 2;
+  string created_at = 3;
+}

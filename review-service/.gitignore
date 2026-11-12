@@ -1,0 +1,6 @@
+.idea/
+.env
+*.log
+bin/
+tmp/*.tar.gz
+*.tar.gz

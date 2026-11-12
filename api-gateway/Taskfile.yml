@@ -1,0 +1,32 @@
+version: '3'
+
+tasks:
+  build:
+    cmds:
+      - docker-compose build
+
+  up:
+    cmds:
+      - docker-compose up -d
+
+  down:
+    cmds:
+      - docker-compose down
+
+  logs:
+    cmds:
+      - docker-compose logs -f
+
+  test:
+    cmds:
+      - curl http://localhost/health
+
+  run:
+    cmds:
+      - task: build
+      - task: up
+      - task: logs
+
+  clean:
+    cmds:
+      - docker-compose down -v --rmi all
